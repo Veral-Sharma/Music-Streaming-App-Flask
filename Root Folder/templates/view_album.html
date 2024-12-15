@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Album Details - {{ album.name }}{% endblock %}
+
+{% block content %}
+  <div class="my-2 text-center">
+    <h1 class="text-white mb-4">{{ album.name }}</h1>
+    <p class="text-white">Creator: {{ album.creator.username }}</p>
+    <h2 class="text-white mb-3">Songs in the Album:</h2>
+    {% for song in album.songs %}
+      <div class="track" style="border: 2px solid #007bff; padding: 10px; border-radius: 15px; margin: 10px;">
+        <h4><a href="{{ url_for('song_details', song_id=song.id) }}" class="btn btn-link text-white">{{ song.title }} by {{ song.singer }}</a></h4>
+        <audio controls>
+          <source src="{{ url_for('static', filename='songs/' + song.filename) }}" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

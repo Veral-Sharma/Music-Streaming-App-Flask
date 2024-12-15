@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Songs - Music App{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-4 text-center" style="color: #FFFFFF; font-size: 3.5em;">Upload Songs</h1>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-{{ messages[0] }} my-3">
+                    {{ messages[1] }}
+                </div>
+                <script>
+                    alert("Song successfully uploaded!");
+                </script>
+            {% endif %}
+        {% endwith %}
+        <style>
+            input[type="file"]::-webkit-file-upload-button {
+                color: #000000;
+            }
+        </style>
+        <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="file" class="form-label text-white">Select a file:</label>
+                <input type="file" name="file" id="file" accept=".mp3" class="form-control-file" style="background-color: #999; border-radius: 30px;" required>
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label text-white">Title:</label>
+                <input type="text" name="title" id="title" class="form-control col-md-6" style="background-color: #999; border-radius: 30px;" required>
+            </div>
+            <div class="mb-3">
+                <label for="singer" class="form-label text-white">Singer's Name:</label>
+                <input type="text" name="singer" id="singer" class="form-control col-md-6" style="background-color: #999; border-radius: 30px;" required>
+            </div>
+            <div class="mb-3">
+                <label for="release_date" class="form-label text-white">Release Date:</label>
+                <input type="date" name="release_date" id="release_date" class="form-control col-md-6" style="background-color: #999; border-radius: 30px;" required>
+            </div>
+            <div class="mb-3">
+                <label for="genre" class="form-label text-white">Genre:</label>
+                <div class="row">
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="rap" value="Rap" required>
+                        <label for="rap" class="text-white">Rap</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="jazz" value="Jazz" required>
+                        <label for="jazz" class="text-white">Jazz</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="pop" value="Pop" required>
+                        <label for="pop" class="text-white">Pop</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="country" value="Country" required>
+                        <label for="country" class="text-white">Country</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="edm" value="Electronic Dance Music" required>
+                        <label for="edm" class="text-white">Electronic Dance Music</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="rock" value="Rock" required>
+                        <label for="rock" class="text-white">Rock</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="hiphop" value="Hip Hop" required>
+                        <label for="hiphop" class="text-white">Hip Hop</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="r&b" value="Rhythm & Blues" required>
+                        <label for="r&b" class="text-white">Rhythm & Blues</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="blues" value="Blues" required>
+                        <label for="blues" class="text-white">Blues</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="classical" value="Classical" required>
+                        <label for="classical" class="text-white">Classical</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="lyrics" class="form-label text-white">Lyrics:</label>
+                <textarea name="lyrics" id="lyrics" class="form-control col-md-6" rows="4" style="background-color: #999; border-radius: 30px;" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+{% endblock %}

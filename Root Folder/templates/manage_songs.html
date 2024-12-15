@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Songs{% endblock %}
+
+{% block content %}
+    <h1>Manage Songs</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Singer</th>
+                <th>Genre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for song in songs %}
+            <tr>
+                <td>{{ song.title }}</td>
+                <td>{{ song.singer }}</td>
+                <td>{{ song.genre }}</td>
+                <td>
+                    <a href="{{ url_for('song_details', song_id=song.id) }}">View Details</a>
+                    {% if current_user.user_type == 'creator' %}
+                        <a href="{{ url_for('edit_song', song_id=song.id) }}">Edit</a>
+                        <form method="post" action="{{ url_for('delete_song', song_id=song.id) }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Delete</button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if current_user.user_type == 'creator' %}
+        <a href="{{ url_for('upload') }}">Upload a New Song</a>
+    {% endif %}
+{% endblock %}

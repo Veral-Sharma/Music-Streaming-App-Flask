@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results - Music App{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-white mb-4">Search Results</h1>
+    <div class="track-list">
+        <ul class="list-group">
+            {% for song in matching_songs %}
+                <li class="list-group-item" style="background-color: #333; border: 2px solid #007bff; border-radius: 15px; margin-bottom: 10px;">
+                    <a href="{{ url_for('song_details', song_id=song.id) }}" class="text-white">{{ song.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

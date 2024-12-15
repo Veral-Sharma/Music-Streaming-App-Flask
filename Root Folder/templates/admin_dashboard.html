@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard - Music App{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-header">Total Users</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ total_users_user_type_user }} (Normal User)</h4>
+                    <h4 class="card-title">{{ total_users_user_type_creator }} (Creators)</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-success text-white">
+                <div class="card-header">App Performance</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ total_tracks_uploaded }}</h4>
+                    <p class="card-text">Tracks</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-info text-white">
+                <div class="card-header">Albums Uploaded</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ total_albums_uploaded }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-warning text-white">
+                <div class="card-header">Genre Distribution</div>
+                <div class="card-body">
+                    <div id="genreChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12 mt-3">
+        <a href="{{ url_for('change_admin_password') }}" class="btn btn-primary">Change Admin Password</a>
+        <a href="{{ url_for('manage_all_songs') }}" class="btn btn-success" style="border-radius: 30px;">Manage All Songs</a>
+    </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    // Parse the JSON data from the server
+    var chartData = {{ genre_chart_html|safe }};
+
+    // Create a bar chart using Plotly
+    Plotly.newPlot('genreChart', [{
+        x: chartData.labels,
+        y: chartData.data,
+        type: 'bar'
+    }]);
+</script>
+{% endblock %}

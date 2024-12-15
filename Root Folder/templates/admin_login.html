@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Login - Music App{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card" style="background-color: #333;">
+                    <div class="card-header bg-primary text-white">Admin Login</div>
+                    <div class="card-body">
+                        <form method="post" class="login-form">
+                            <div class="mb-3">
+                                <label for="username" class="form-label" style="color: white;">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" style="background-color: #999;" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label" style="color: white;">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" style="background-color: #999;" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="link">
+                            <a href="{{ url_for('register') }}" style="color: white;">Don't have an account? Register Here.</a>
+                        </div>
+                        <div class="link">
+                            <a href="{{ url_for('login') }}" style="color: white;">User? Login Here.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

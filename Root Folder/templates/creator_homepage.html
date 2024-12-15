@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Music App - Creator Home{% endblock %}
+
+{% block content %}
+<div class="my-4">
+  <h1 class="text-white mb-4" style="color: #FFFFFF; font-size: 3.5em; margin-bottom: 60px;">&nbsp&nbspManage Your Music:</h1>
+
+  <div class="row">
+    <div class="col-md-4 mx-auto mb-4">
+      <div class="card h-100 mb-8" style="background-color: #999; border: 2px solid #007bff; border-radius: 30px; padding: 15px;">
+        <div class="card-body">
+          <h5 class="card-title text-black">Upload New Song</h5>
+          <p class="card-text text-black">Add your latest creation to the platform and share it with the world!</p>
+          <a href="{{ url_for('upload') }}" class="btn btn-primary">Upload Song</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mx-auto mb-4">
+      <div class="card h-100 mb-8" style="background-color: #999; border: 2px solid #007bff; border-radius: 30px; padding: 15px;">
+        <div class="card-body">
+          <h5 class="card-title text-black">Dashboard</h5>
+          <p class="card-text text-black">View songs uploaded by you, edit details, read lyrics or remove songs.</p>
+          <a href="{{ url_for('creator_dashboard') }}" class="btn btn-primary">Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mx-auto mb-4">
+      <div class="card h-100 mb-8" style="background-color: #999; border: 2px solid #007bff; border-radius: 30px; padding: 15px;">
+        <div class="card-body">
+          <h5 class="card-title text-black">Make Album</h5>
+          <p class="card-text text-black">Create a new album by adding your songs to a collection.</p>
+          <a href="{{ url_for('make_album') }}" class="btn btn-primary">Make Album</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

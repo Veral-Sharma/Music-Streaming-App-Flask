@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Music App{% endblock %}
+
+{% block content %}
+  <div class="col-md-12 text-center d-flex flex-column justify-content-center" style="min-height: 100vh;">
+    <h1 style="color:#FFFFFF; font-size: 4em; margin-bottom: 60px;">Welcome to Music Streaming Application!</h1>
+
+    <div class="d-flex justify-content-center mt-4">
+      <a href="{{ url_for('login') }}" class="btn btn-primary mx-3" style="width: 200px; height: 60px; font-size: 1.5em;">Login</a>
+      <a href="{{ url_for('register') }}" class="btn btn-primary mx-3" style="width: 200px; height: 60px; font-size: 1.5em;">Register</a>
+      <a href="{{ url_for('admin_login') }}" class="btn btn-primary mx-3" style="width: 200px; height: 60px; font-size: 1.5em;">Admin Login</a>
+    </div>
+  </div>
+{% endblock %}

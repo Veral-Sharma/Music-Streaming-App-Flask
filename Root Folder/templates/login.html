@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Music App{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card" style="background-color: #333;">
+                    <div class="card-header bg-primary text-white">User Login</div>
+                    <div class="card-body">
+                        <form method="POST" class="login-form">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error }}</div>
+                            {% endif %}
+                            <div class="mb-3">
+                                <label for="username" class="form-label" style="color: white;">Username</label>
+                                <input type="text" name="username" id="username" class="form-control" style="background-color: #999;" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label" style="color: white;">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" style="background-color: #999;" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="link">
+                            <a href="{{ url_for('register') }}" style="color: white;">Don't have an account? Register Here.</a>
+                        </div>
+                        <div class="link">
+                            <a href="{{ url_for('admin_login') }}" style="color: white;">Admin? Login Here.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

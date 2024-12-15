@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Read Lyrics - {{ song.title }}{% endblock %}
+
+{% block content %}
+  <div class="my-2">
+    <h1 class="text-white mb-4 text-center">Read Lyrics - {{ song.title }}</h1>
+
+    <div class="container">
+      <div class="track text-center" style="border: 2px solid #007bff; padding: 10px; border-radius: 15px; margin: 10px;">
+        <h2 class="text-white">Lyrics</h2>
+        <p class="text-white">{{ song.lyrics }}</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

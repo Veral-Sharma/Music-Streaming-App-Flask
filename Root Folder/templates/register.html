@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Music App{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card" style="background-color: #333;">
+                    <div class="card-header bg-primary text-white">Register</div>
+                    <div class="card-body">
+                        <form method="post" action="{{ url_for('register') }}">
+                            {% if error %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ error }}
+                                </div>
+                            {% endif %}
+                            <div class="mb-3">
+                                <label for="username" class="form-label" style="color: white;">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" style="background-color: #999;" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label" style="color: white;">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" style="background-color: #999;" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: white;">User Type</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="user_type" id="normalUser" value="user" checked>
+                                    <label class="form-check-label" for="normalUser" style="color: white;">
+                                        Normal User
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="user_type" id="creator" value="creator">
+                                    <label class="form-check-label" for="creator" style="color: white;">
+                                        Creator
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="link">
+                            <a href="{{ url_for('admin_login') }}" style="color: white;">Admin? Login Here.</a>
+                        </div>
+                        <div class="link">
+                            <a href="{{ url_for('login') }}" style="color: white;">Already a User? Login Here.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - Music Streaming Application{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card" style="background-color: #333;">
+                <div class="card-header bg-primary text-white">User Profile</div>
+                <div class="card-body">
+                    <form method="post" action="{{ url_for('profile') }}">
+                        <div class="mb-3">
+                            <label for="new_password" class="form-label" style="color: white;">New Password</label>
+                            <input type="password" class="form-control" id="new_password" name="new_password" style="background-color: #999;" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

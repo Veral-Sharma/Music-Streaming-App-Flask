@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Song{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-4 text-center" style="color: #FFFFFF; font-size: 3.5em;">Edit Song</h1>
+        <form method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label text-white">Title:</label>
+                <input type="text" id="title" name="title" value="{{ song.title }}" class="form-control col-md-6" style="background-color: #999; border-radius: 30px;" required>
+            </div>
+            <div class="mb-3">
+                <label for="singer" class="form-label text-white">Singer:</label>
+                <input type="text" id="singer" name="singer" value="{{ song.singer }}" class="form-control col-md-6" style="background-color: #999; border-radius: 30px;" required>
+            </div>
+            <div class="mb-3">
+                <label for="release_date" class="form-label text-white">Release Date:</label>
+                <input type="date" id="release_date" name="release_date" value="{{ song.release_date|default('') }}" class="form-control col-md-6" style="background-color: #999; border-radius: 30px;" required>
+            </div>
+            <div class="mb-3">
+                <label for="genre" class="form-label text-white">Genre:</label>
+                <div class="row">
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="rap" value="Rap" required {% if song.genre == 'Rap' %}checked{% endif %}>
+                        <label for="rap" class="text-white">Rap</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="jazz" value="Jazz" required {% if song.genre == 'Jazz' %}checked{% endif %}>
+                        <label for="jazz" class="text-white">Jazz</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="pop" value="Pop" required {% if song.genre == 'Pop' %}checked{% endif %}>
+                        <label for="pop" class="text-white">Pop</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="country" value="Country" required {% if song.genre == 'Country' %}checked{% endif %}>
+                        <label for="country" class="text-white">Country</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="edm" value="Electronic Dance Music" required {% if song.genre == 'Electronic Dance Music' %}checked{% endif %}>
+                        <label for="edm" class="text-white">EDM</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="rock" value="Rock" required {% if song.genre == 'Rock' %}checked{% endif %}>
+                        <label for="rock" class="text-white">Rock</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="hiphop" value="Hip Hop" required {% if song.genre == 'Hip Hop' %}checked{% endif %}>
+                        <label for="hiphop" class="text-white">Hip Hop</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="r&b" value="Rhythm & Blues" required {% if song.genre == 'Rhythm & Blues' %}checked{% endif %}>
+                        <label for="r&b" class="text-white">Rhythm & Blues</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="blues" value="Blues" required {% if song.genre == 'Blues' %}checked{% endif %}>
+                        <label for="blues" class="text-white">Blues</label>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <input type="radio" name="genre" id="classical" value="Classical" required {% if song.genre == 'Classical' %}checked{% endif %}>
+                        <label for="classical" class="text-white">Classical</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="lyrics" class="form-label text-white">Lyrics:</label>
+                <textarea id="lyrics" name="lyrics" rows="4" cols="50" class="form-control col-md-6" style="background-color: #999; border-radius: 30px;">{{ song.lyrics|default('') }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="border-radius: 30px;">Save Changes</button>
+        </form>
+        <br>
+        <a href="{{ url_for('creator_dashboard') }}" class="text-white">Back to Creator Dashboard</a>
+    </div>
+{% endblock %}

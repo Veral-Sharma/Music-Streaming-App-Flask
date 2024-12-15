@@ -1,0 +1,18 @@
+<!-- add_to_playlist.html -->
+{% extends 'base.html' %}
+
+{% block title %}Add to Playlist{% endblock %}
+
+{% block content %}
+    <h2>Add "{{ song.title }}" to Playlist</h2>
+    <form method="POST">
+        <label for="playlist_id">Select Playlist:</label>
+        <select name="playlist_id" id="playlist_id" required>
+            {% for playlist in playlists %}
+                <option value="{{ playlist.id }}">{{ playlist.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Add to Playlist</button>
+    </form>
+    <a href="{{ url_for('user_homepage') }}">Back to User Homepage</a>
+{% endblock %}
